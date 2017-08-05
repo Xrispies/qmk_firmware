@@ -1,0 +1,1 @@
+this is a test of my Planck keyboard. I don't like having to hold e.g. raise to type numbers 1234567890. I'll have to reprogram it to tap toggle between layers.
