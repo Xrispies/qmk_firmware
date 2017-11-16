@@ -34,6 +34,8 @@ enum planck_keycodes {
 #define ALT_BSPC MT(MOD_LALT, KC_BSPC)
 #define SHFT_ESC MT(MOD_LSFT, KC_ESC)
 #define CTRL_TAB MT(MOD_LCTL, KC_TAB)
+#define CTL_LFT LCTL(KC_LEFT)
+#define CTL_RGT LCTL(KC_RGHT)
 #define TG_NUMP TG(_NUMPAD)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -122,10 +124,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_MOVE] = {
-  {_______, _______, _______, _______, _______, _______, _______, _______, KC_7,    KC_8,    KC_9,    KC_SLSH},
-  {_______, _______, _______, _______, _______, _______, _______, _______, KC_4,    KC_5,    KC_6,    KC_ASTR},
-  {_______, _______, _______, _______, _______, _______, _______, _______, KC_1,    KC_2,    KC_3,    KC_MINS},
-  {_______, _______, _______, _______, _______, _______, _______, _______, _______, KC_0,    KC_DOT,  KC_PLUS}
+  {_______, _______, _______, _______, _______, _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  _______, _______},
+  {_______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______},
+  {_______, _______, _______, _______, _______, _______, CTL_LFT, _______, _______, CTL_RGT, _______, _______},
+  {_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______}
 },
 
 /* Adjust (Lower + Raise)
