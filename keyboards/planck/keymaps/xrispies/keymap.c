@@ -30,7 +30,7 @@ enum planck_keycodes {
 
 #define NUM_ENT LT(_NUMS, KC_ENT)
 //#define SYM_DEL LT(_SYMS, KC_DEL)
-#define MOV_QOT LT(_MOVE, KC_QUOT)
+#define MOV_SCLN LT(_MOVE, KC_SCLN)
 #define ALT_BSPC MT(MOD_LALT, KC_BSPC)
 #define SHFT_ESC MT(MOD_LSFT, KC_ESC)
 #define CTRL_TAB MT(MOD_LCTL, KC_TAB)
@@ -44,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------------------------------.
  * |   ~    |    Q   |    W   |    E   |    R   |    T   |    Y   |    U   |    I   |    O   |    P   |  Del   |
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
- * |Ctrl_Tab|    A   |    S   |    D   |    F   |    G   |    H   |    J   |    K   |    L   |    ;   | Move_" |
+ * |Ctrl_Tab|    A   |    S   |    D   |    F   |    G   |    H   |    J   |    K   |    L   | Move_; |   "    |
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
  * |Shft_Esc|    Z   |    X   |    C   |    V   |    B   |    N   |    M   |    ,   |    .   |    /   |  Shift |
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
@@ -52,10 +52,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------------------------------'
  */
 [_QWERTY] = {
-  {KC_TILD,  KC_Q,    KC_W,    KC_E,    KC_R,      KC_T,     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_DEL },
-  {CTRL_TAB, KC_A,    KC_S,    KC_D,    KC_F,      KC_G,     KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, MOV_QOT},
-  {SHFT_ESC, KC_Z,    KC_X,    KC_C,    KC_V,      KC_B,     KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT},
-  {KC_LCTL,  KC_LGUI, KC_HYPR, KC_LALT, MO(_SYMS), ALT_BSPC, KC_SPC,  NUM_ENT, TG_NUMP, KC_MENU, KC_RGUI, KC_RCTL}
+  {KC_TILD,  KC_Q,    KC_W,    KC_E,    KC_R,      KC_T,     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,     KC_DEL },
+  {CTRL_TAB, KC_A,    KC_S,    KC_D,    KC_F,      KC_G,     KC_H,    KC_J,    KC_K,    KC_L,    MOV_SCLN, KC_QUOT},
+  {SHFT_ESC, KC_Z,    KC_X,    KC_C,    KC_V,      KC_B,     KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  KC_RSFT},
+  {KC_LCTL,  KC_LGUI, KC_HYPR, KC_LALT, MO(_SYMS), ALT_BSPC, KC_SPC,  NUM_ENT, TG_NUMP, KC_MENU, KC_RGUI,  KC_RCTL}
 },
 
 /* Lower
@@ -126,7 +126,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_MOVE] = {
   {_______, _______, _______, _______, _______, _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  _______, _______},
   {_______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______},
-  {_______, _______, _______, _______, _______, _______, CTL_LFT, _______, _______, CTL_RGT, _______, _______},
+  {_______, _______, _______, _______, _______, _______, _______, CTL_LFT, CTL_RGT, _______, _______, _______},
   {_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______}
 },
 
