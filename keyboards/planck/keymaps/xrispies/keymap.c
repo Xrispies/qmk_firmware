@@ -13,6 +13,7 @@ enum planck_layers {
   _SYMS,
   _NUMS,
   _NUMPAD,
+  _MOVE,
   _ADJUST
 };
 
@@ -28,28 +29,31 @@ enum planck_keycodes {
 };
 
 #define NUM_ENT LT(_NUMS, KC_ENT)
-#define SYM_DEL LT(_SYMS, KC_DEL)
+//#define SYM_DEL LT(_SYMS, KC_DEL)
+#define MOV_QOT LT(_MOVE, KC_QUOT)
 #define ALT_BSPC MT(MOD_LALT, KC_BSPC)
+#define SHFT_ESC MT(MOD_LSFT, KC_ESC)
+#define CTRL_TAB MT(MOD_LCTL, KC_TAB)
 #define TG_NUMP TG(_NUMPAD)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Qwerty
  * ,-----------------------------------------------------------------------------------------------------------.
- * |  Tab   |    Q   |    W   |    E   |    R   |    T   |    Y   |    U   |    I   |    O   |    P   |  Del   |
+ * |   ~    |    Q   |    W   |    E   |    R   |    T   |    Y   |    U   |    I   |    O   |    P   |  Del   |
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
- * |  Esc   |    A   |    S   |    D   |    F   |    G   |    H   |    J   |    K   |    L   |    ;   |   "    |
+ * |Ctrl_Tab|    A   |    S   |    D   |    F   |    G   |    H   |    J   |    K   |    L   |    ;   | Move_" |
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
- * |  Shift |    Z   |    X   |    C   |    V   |    B   |    N   |    M   |    ,   |    .   |    /   |  Shift |
+ * |Shft_Esc|    Z   |    X   |    C   |    V   |    B   |    N   |    M   |    ,   |    .   |    /   |  Shift |
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
- * |  Ctrl  |  GUI   |  Hyper |  Alt   | Lo_Del |Alt_Bksp|  Space | Hi_Ent | Numpad | RClick |  GUI   |  Ctrl  |
+ * |  Ctrl  |  GUI   |  Hyper |  Alt   |  Lower |Alt_Bksp|  Space | Hi_Ent | Numpad |  Menu  |  GUI   |  Ctrl  |
  * `-----------------------------------------------------------------------------------------------------------'
  */
 [_QWERTY] = {
-  {KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_DEL },
-  {KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,     KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT},
-  {KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,     KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT},
-  {KC_LCTL, KC_LGUI, KC_HYPR, KC_LALT, SYM_DEL, ALT_BSPC, KC_SPC,  NUM_ENT, TG_NUMP, KC_BTN2, KC_RGUI, KC_RCTL}
+  {KC_TILD,  KC_Q,    KC_W,    KC_E,    KC_R,      KC_T,     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_DEL },
+  {CTRL_TAB, KC_A,    KC_S,    KC_D,    KC_F,      KC_G,     KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, MOV_QOT},
+  {SHFT_ESC, KC_Z,    KC_X,    KC_C,    KC_V,      KC_B,     KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT},
+  {KC_LCTL,  KC_LGUI, KC_HYPR, KC_LALT, MO(_SYMS), ALT_BSPC, KC_SPC,  NUM_ENT, TG_NUMP, KC_MENU, KC_RGUI, KC_RCTL}
 },
 
 /* Lower
@@ -106,6 +110,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   {_______, _______, _______, _______, _______, _______, _______, _______, _______, KC_0,    KC_DOT,  KC_PLUS}
 },
 
+/* Movement
+ * ,-----------------------------------------------------------------------------------.
+ * |      |      |      |      |      |      |      |      |   7  |   8  |   9  |  /   |
+ * |------+------+------+------+------+------|------+------+------+------+------+------|
+ * |      |      |      |      |      |      |      |      |   4  |   5  |   6  |  *   |
+ * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * |      |      |      |      |      |      |      |      |   1  |   2  |   3  |  -   |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |      |      |      |      |   0  |   .  |  +   |
+ * `-----------------------------------------------------------------------------------'
+ */
+[_MOVE] = {
+  {_______, _______, _______, _______, _______, _______, _______, _______, KC_7,    KC_8,    KC_9,    KC_SLSH},
+  {_______, _______, _______, _______, _______, _______, _______, _______, KC_4,    KC_5,    KC_6,    KC_ASTR},
+  {_______, _______, _______, _______, _______, _______, _______, _______, KC_1,    KC_2,    KC_3,    KC_MINS},
+  {_______, _______, _______, _______, _______, _______, _______, _______, _______, KC_0,    KC_DOT,  KC_PLUS}
+},
 
 /* Adjust (Lower + Raise)
  * ,-----------------------------------------------------------------------------------.
