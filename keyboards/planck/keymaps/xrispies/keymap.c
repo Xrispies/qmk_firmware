@@ -32,8 +32,8 @@ enum planck_keycodes {
 //#define SYM_DEL LT(_SYMS, KC_DEL)
 #define MOV_SCLN LT(_MOVE, KC_SCLN)
 #define ALT_BSPC MT(MOD_LALT, KC_BSPC)
-#define SHFT_ESC MT(MOD_LSFT, KC_ESC)
-#define CTRL_TAB MT(MOD_LCTL, KC_TAB)
+//#define SHFT_ESC MT(MOD_LSFT, KC_ESC)
+#define CTRL_ESC MT(MOD_LCTL, KC_ESC)
 #define CTL_LFT LCTL(KC_LEFT)
 #define CTL_RGT LCTL(KC_RGHT)
 #define TG_NUMP TG(_NUMPAD)
@@ -42,9 +42,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Qwerty
  * ,-----------------------------------------------------------------------------------------------------------.
- * |   ~    |    Q   |    W   |    E   |    R   |    T   |    Y   |    U   |    I   |    O   |    P   |  Del   |
+ * |  Tab   |    Q   |    W   |    E   |    R   |    T   |    Y   |    U   |    I   |    O   |    P   |  Del   |
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
- * |Ctrl_Tab|    A   |    S   |    D   |    F   |    G   |    H   |    J   |    K   |    L   | Move_; |   "    |
+ * |Ctrl_Esc|    A   |    S   |    D   |    F   |    G   |    H   |    J   |    K   |    L   | Move_; |   "    |
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
  * |Shft_Esc|    Z   |    X   |    C   |    V   |    B   |    N   |    M   |    ,   |    .   |    /   |  Shift |
  * |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
@@ -52,10 +52,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------------------------------'
  */
 [_QWERTY] = {
-  {KC_TILD,  KC_Q,    KC_W,    KC_E,    KC_R,      KC_T,     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,     KC_DEL },
-  {CTRL_TAB, KC_A,    KC_S,    KC_D,    KC_F,      KC_G,     KC_H,    KC_J,    KC_K,    KC_L,    MOV_SCLN, KC_QUOT},
-  {SHFT_ESC, KC_Z,    KC_X,    KC_C,    KC_V,      KC_B,     KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  KC_RSFT},
-  {KC_LCTL,  KC_LGUI, KC_HYPR, KC_LALT, MO(_SYMS), ALT_BSPC, KC_SPC,  NUM_ENT, TG_NUMP, KC_MENU, KC_RGUI,  KC_RCTL}
+  {KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,      KC_T,     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,     KC_DEL },
+  {CTRL_ESC, KC_A,    KC_S,    KC_D,    KC_F,      KC_G,     KC_H,    KC_J,    KC_K,    KC_L,    MOV_SCLN, KC_QUOT},
+  {KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,      KC_B,     KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  KC_RSFT},
+  {KC_LCTL,  KC_LGUI, KC_HYPR, KC_LALT, MO(_SYMS), ALT_BSPC, KC_SPC,  NUM_ENT, TG_NUMP, KC_APP,  KC_RGUI,  KC_RCTL}
 },
 
 /* Lower
@@ -64,16 +64,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  |      |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |ISO ~ |ISO | | Home | End  |      |
+ * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 | TODO |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |      |      |      | Next | Vol- | Vol+ | Play |
  * `-----------------------------------------------------------------------------------'
  */
 [_SYMS] = {
-  {KC_TILD, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_UNDS,    KC_PLUS,    KC_LCBR, KC_RCBR, KC_PIPE},
-  {_______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR,    KC_ASTR,    KC_LPRN, KC_RPRN, _______},
-  {_______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  S(KC_NUHS), S(KC_NUBS), KC_HOME, KC_END,  _______},
-  {_______, _______, _______, _______, _______, _______, _______, _______,    KC_MNXT,    KC_VOLD, KC_VOLU, KC_MPLY}
+  {KC_TILD, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE},
+  {_______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, _______},
+  {_______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, _______, _______, _______, _______},
+  {_______, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY}
 },
 
 /* Raise
@@ -82,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  |      |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |ISO # |ISO / |Pg Up |Pg Dn |      |
+ * |      |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 | TODO |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |      |      |      | Next | Vol- | Vol+ | Play |
  * `-----------------------------------------------------------------------------------'
@@ -90,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_NUMS] = {
   {KC_GRV,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS},
   {_______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______},
-  {_______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_NUHS, KC_NUBS, KC_PGUP, KC_PGDN, _______},
+  {_______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, _______, _______, _______, _______},
   {_______, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY}
 },
 
@@ -114,17 +114,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Movement
  * ,-----------------------------------------------------------------------------------.
- * |      |      |      |      |      |      |      |      |   7  |   8  |   9  |  /   |
+ * |      |      |      |      |      |      |      |CtlLft| Home | End  |CtlRgt|      |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |   4  |   5  |   6  |  *   |
+ * |      |      |      |      |      |      |      | Left | Down |  Up  | Right|      |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |   1  |   2  |   3  |  -   |
+ * |      |      |      |      |      |      |      |      |PgDown| PgUp |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |      |   0  |   .  |  +   |
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_MOVE] = {
-  {_______, _______, _______, _______, _______, _______, KC_HOME, CTL_LFT, CTL_RGT, KC_END,  _______, _______},
+  {_______, _______, _______, _______, _______, _______, CTL_LFT, KC_HOME, KC_END,  CTL_RGT, _______, _______},
   {_______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______},
   {_______, _______, _______, _______, _______, _______, _______, KC_PGDN, KC_PGUP, _______, _______, _______},
   {_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______}
